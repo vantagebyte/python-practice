@@ -39,5 +39,30 @@ def check_strength(password):
     else:
         return 'Weak'
 
+while True:
+    print('1. Generate a password')
+    print('2. Check password strength')
+    print('3. Quit')
+    choice = input('Choose an option: ')
+    if choice == '3':
+        print('Goodbye')
+        break
+    elif choice == '1':
+        try:
+            length = int(input('Password length: '))
+        except ValueError:
+            print('Please enter a number')
+            continue
+        use_numbers = input('Include numbers? (y/n)').lower() == 'y'
+        use_symbols = input('Include symbols? (y/n)').lower() == 'y'
+        password = generate_password(length, use_numbers, use_symbols)  
+        print(password)
+    elif choice == '2':
+        password = input('Enter password: ')
+        strength = check_strength(password)
+        print(f'Strength: {strength}')
 
+    else:
+        print('Please choose 1, 2 or 3')
+    
         
