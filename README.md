@@ -5,3 +5,4 @@ Small Python projects I'm building while learning.
 - Temp Calc: Celsius/Fahrenheit converter
 - Guess the Number: number guessing game
 - Code Breaker: guess the secret 4-digit code using correct/wrong spot hints
+- Password Toolkit: generate secure passwords and check password strength
