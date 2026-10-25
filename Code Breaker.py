@@ -4,6 +4,11 @@ secret_code = str(random.randint(0,9999)).zfill(4)
 tries = 0
 while True:
     guess = input('Take a guess of the 4 digit code: ')
+    if len(guess) != 4 or not guess.isdigit():
+        print(f'"{guess}" isn\'t valid - enter exactly 4 digits')
+        continue
+    
+
     tries += 1
     if guess == secret_code:
         print(f'Code cracked! Tries: {tries}')
