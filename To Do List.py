@@ -1,5 +1,19 @@
 tasks = []
 
+def save_tasks():
+    with open('tasks.txt', 'w') as file:
+        for task in tasks:
+            file.write(task + '\n')
+
+def load_tasks():
+    try:
+        with open('tasks.txt', 'r' ) as file:
+            for line in file:
+                tasks.append(line.strip())
+    except FileNotFoundError:
+        pass
+
+load_tasks()
 while True:
     print('--- To-Do List ---')
     print('1. Add')
@@ -14,6 +28,7 @@ while True:
     elif choice == '1':
         task = input('Enter a task: ')
         tasks.append(task)
+        save_tasks()
     elif choice == '2':
         if not tasks:
             print('No tasks yet')
@@ -28,6 +43,7 @@ while True:
                 print(f'{number}. {task}')
             done = int(input('Which task number is done? '))
             tasks[done - 1] = '✓ ' + tasks[done-1]
+            save_tasks()
     elif choice == '4':
         if not tasks:
             print('No tasks yet')
@@ -37,6 +53,7 @@ while True:
             delete = int(input('Which task number should be deleted? '))
             removed = tasks.pop(delete-1)
             print(f'Deleted: {removed}')
+            save_tasks()
 
             
 
